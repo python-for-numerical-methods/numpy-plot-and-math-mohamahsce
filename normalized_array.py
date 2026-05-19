@@ -1,25 +1,23 @@
 import numpy as np
 
-def normalized_array(data):
+def normalize_array(x):
     """
-    change for checking
-    מנרמלת מערך נתונים לטווח של [0, 1] לפי שיטת Min-Max Scaling.
-    
-    הנוסחה לביצוע:
-    x_norm = (x - min) / (max - min)
-    
-    פרמטרים:
-    data (list or np.array): מערך של מספרים.
-    
-    מחזירה:
-    np.array: מערך מנורמל. אם כל הערכים במערך זהים, יש להחזיר מערך של אפסים.
+    Normalizes a 1D NumPy array to the range [0, 1].
+    If all values are identical, returns an array of zeros.
     """
-    # המרת הקלט ל-numpy array לצורך חישובים וקטוריים
-    data = np.array(data)
-    
-    # --- כיתבו את הקוד שלכם כאן ---
-    pass
-    # חשוב לזכור להחליף את pass ב- return
+    # Convert input to a numpy array just in case a list is passed
+    x = np.asarray(x, dtype=float)
+   
+    # Calculate min and max values
+    x_min = np.min(x)
+    x_max = np.max(x)
+   
+    # Check the edge case where all values are identical
+    if x_min == x_max:
+        return np.zeros_like(x)
+   
+    # Perform vectorized min-max normalization
+    return (x - x_min) / (x_max - x_min)
 
 if __name__ == "__main__":
     # כאן הסטודנטים יכולים להריץ בדיקה עצמית מהירה
