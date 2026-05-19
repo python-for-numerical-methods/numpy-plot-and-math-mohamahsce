@@ -2,6 +2,7 @@ import numpy as np
 
 def normalized_array(data):
     """
+    change for checking
     מנרמלת מערך נתונים לטווח של [0, 1] לפי שיטת Min-Max Scaling.
     
     הנוסחה לביצוע:
